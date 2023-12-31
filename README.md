@@ -2,9 +2,13 @@
 1.create an ec2(t2.micro) instance on AWS and after ssh to this instance install terraform on that using below commands:
     #Confirm the latest version number on the terraform website:
     https://www.terraform.io/downloads.html
+    
     $ wget https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+    
     $ unzip terraform_1.0.7_linux_amd64.zip
+    
     $ sudo mv terraform /usr/local/bin/
+    
     $ terraform --version
 
 
