@@ -30,7 +30,9 @@
 
    check sonar http://<ip_addr_jenkins_server>:9000
    
-   check prometheus http://<ip_addr_monitoring_server>:9090  #if url is not came up check status of service if not running start it using $ sudo systemctl start prometheus
+   check prometheus http://<ip_addr_monitoring_server>:9090  #if url is not came up check status of service if not running start it using
+
+   $ sudo systemctl start prometheus
 
    check grafana http://<ip_addr_monitoring_server>:3000
 
