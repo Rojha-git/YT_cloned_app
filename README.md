@@ -51,7 +51,7 @@
    
    after that you can create your userid and password.
 
-8. after login to jenkins first of all click on "manage plugins" and install required plugins for Docker,Sonar,Nodejs and restart jenkins.
+8. after login to jenkins first of all click on "manage plugins" and install required plugins for Docker, Sonar, Nodejs , kubernetes and restart jenkins.
    also under the "tools" section configure jdk , nodejs , sonar scanner and under "system"  configure sonar server using server's console urls.
 
 9. Generate the access token from sonarqube , github , dockerhub and configure all this under the jenkins "credentials" so that jenkins can access all these.
@@ -170,6 +170,7 @@
 
           
 16. --Integrate Prometheus with EKS and Import Grafana Monitoring Dashboard for Kubernetes
+    
     I.--Install Helm
     
       $ sudo snap install helm --classic
@@ -182,24 +183,31 @@
 
       $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts     ///Add Prometheus Helm repo
 
-      $ kubectl create namespace prometheus            ///Create Prometheus namespace
+      $ kubectl create namespace prometheus
 
-      $ helm install stable prometheus-community/kube-prometheus-stack -n prometheus      ///Install Prometheus
+      $ helm install stable prometheus-community/kube-prometheus-stack -n prometheus
 
-      $ kubectl get pods -n prometheus          ///To check whether Prometheus is installed
+      $ kubectl get pods -n prometheus
 
-      $ kubectl get svc -n prometheus           ///to check the services file (svc) of the Prometheus
+      $ kubectl get svc -n prometheus
 
 
     III. For exposing Prometheus to the external world using LoadBalancer
     
-      $ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus    ///type:LoadBalancer, change port & targetport to 9090, save and close
+      $ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus    #type:LoadBalancer, change port & targetport to 9090, save and close
 
       $ kubectl get svc -n prometheus    //copy dns name of LB and browse with 9090    
        
+17. After all the steps of #16 Login to grafana console: 
+
+              -- Add data source in grafana using loadbalancer dns got from "$ kubectl get svc -n prometheus".
     
-             
-   
+              -- Create or add dashboard for kubernets cluster in grafana #id you can check on google.
+
+    
+18. Till now we have testing all things for CI and monitoring for whole infrastructure. Now we are proceeding with CD Part for that we need to uncomment "stage('Deploy to Kubernets')" 
+    --So for that we can configure "argocd" on kuberberts cluster for automated deployment also we use jenkins for CD as well on kubernets.
+    --let's go by jenkins only , So as we already installed the plugins for k8s on jenkins so now we need to copy the     
 
    
 
