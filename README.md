@@ -67,23 +67,30 @@
     after login :
     --Add job for node exporter in prometheus
     $ cd /etc/prometheus/, ls, $ sudo nano prometheus.yml and below the job of prometheus, add job for node exporter
+
+    
          - job_name: 'node_exporter'
            static_configs:
              - targets: ['IP-Address-monitoring:9100']
+
+    
          - job_name: 'jenkins'
            metrics_path: '/prometheus'
            static_configs:
              - targets: ['IP-Address-jenkins:8080']
+    
 
     --Check the indentatio of the prometheus config file with below command
+    
     $ promtool check config /etc/prometheus/prometheus.yml
 
     --Reload the Prometheus configuration
+    
     $ curl -X POST http://localhost:9090/-/reload 
     
-14. After performing the #12 point you will be able to see the targets for matrices under the traget option in prometheus console.
+15. After performing the #12 point you will be able to see the targets for matrices under the traget option in prometheus console.
 
-15. login to grafana using http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
+16. login to grafana using http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
 
     --configure prometheus as the data source under the grafana using the prometheus url:
 
@@ -92,16 +99,20 @@
 
     **** Now you are able to access the monitoring console on grafana for both jenkins job and node_exporter server  ****
     
-16. login to Jenkins console and run the jenkins job by commenting deployment stage /* stage('Deploy to Kubernets') */ becuase 
-    we have have not created aws EKS cluster yet , by this we can test our pipeline till "docker build and push".
+17. login to Jenkins console and run the jenkins job by commenting deployment stage /* stage('Deploy to Kubernets') */ 
 
-17. run the job , check if any issue came then try to troubleshoot.
+    becuase we have have not created aws EKS cluster yet , by this we can test our pipeline till "docker build and push".
 
-18. configuration steps for generating gmail report --->>
+19. run the job , check if any issue came then try to troubleshoot.
+
+20. configuration steps for generating gmail report --->>
 
     --login to your gmail account and search for app password under : " Account >> security " and genaerte the token
+
     --Go to jenkins console and configure this in jenkins credential using username and password(token).
+
     --under "Dashboard > Manage jenkins > system" configure email notification using smtp server "smtp.gmail.com" , port "465" and your gmail.
+
     --similliarly configure extended email notification using global credential that we have configured in jenkins using the same port and server as above.
 
       **** Once you trigger the job after this above configuration #18 , it will generate an mail ****
