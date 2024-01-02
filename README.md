@@ -36,6 +36,13 @@
 
    check grafana http://<ip_addr_monitoring_server>:3000
 
+   --Commands to check services
+   $ sudo systemctl status prometheus
+   
+   $ sudo systemctl status node_exporter
+   
+   $ sudo systemctl status grafana-server
+
 6. login to jenkins console:
    
    using http://<ip_addr_jenkins_server>:8080
@@ -51,12 +58,46 @@
 
 10. Under jenkins create an pipeline with "yt_cloned_ci-cd" name using below steps:
 
-   I.   select SCM option and provide repo https://github.com/Rojha-git/YT_cloned_app.git to access jenkins file for ci-cd.
-   II.
+     I.   select SCM option and provide repo https://github.com/Rojha-git/YT_cloned_app.git to access jenkins file for ci-cd.
+     II.
 
-11. login to sonarqube console and configure quality gate , webhook , and create new project using jenkins server url.
-12. 
+11. login to sonarqube console and configure quality gate , webhook , and create new project using jenkins server url, once all these completed then after the jenkins pipeline 
+    completion you will be able to see all the flow and unit tests.
+
+12. Login to prometheus using http://<ip_addr_monitoring_server>:9090   #username and password will be "admin"
+    after login :
+    --Add job for node exporter in prometheus
+    $ cd /etc/prometheus/, ls, $ sudo nano prometheus.yml and below the job of prometheus, add job for node exporter
+         - job_name: 'node_exporter'
+           static_configs:
+             - targets: ['IP-Address-monitoring:9100']
+         - job_name: 'jenkins'
+           metrics_path: '/prometheus'
+           static_configs:
+             - targets: ['IP-Address-jenkins:8080']
+
+    --Check the indentatio of the prometheus config file with below command
+    $ promtool check config /etc/prometheus/prometheus.yml
+
+    --Reload the Prometheus configuration
+    $ curl -X POST http://localhost:9090/-/reload 
+    
+13. After performing the #12 point you will be able to see the targets for matrices under the traget option in prometheus console.
+
+14. login to grafana using http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
+
+    --configure prometheus as the data source under the grafana using the prometheus url:
+
+    --Import or add the dashboard for prometheus and jenkins by dashboard id of grafana   # you can try by google as well for dashboard id.
+
+
+    **** Now you are able to access the monitoring console on grafana for both jenkins job and node_exporter server  ****
+    
+
+    
        
+    
+             
    
 
    
