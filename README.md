@@ -252,9 +252,9 @@ Before you begin, make sure you have the following prerequisites:
     
     -- So for that we can configure "argocd" on kuberberts cluster for automated deployment
 
-                              **"OR"** we
+                              **"OR"**
 
-                use jenkins for CD as well on kubernets.
+    -- we can use jenkins for CD as well on kubernets.
     
     -- let's go by jenkins only , So as we already installed the plugins for k8s on jenkins so now we need to ssh jenkins server and copy the copy config file from /home/.kube/config and put it on your local system .
 
