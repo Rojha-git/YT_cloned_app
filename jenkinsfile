@@ -56,7 +56,7 @@ pipeline {
         }
         stage("TRIVY Image Scan"){
             steps{
-                sh "trivy image ashfaque9x/youtube-clone:latest > trivyimage.txt" 
+                sh "trivy image rajf5/youtube-clone:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to Kubernets'){
