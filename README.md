@@ -212,32 +212,33 @@ Before you begin, make sure you have the following prerequisites:
           
 16. --Integrate Prometheus with EKS and Import Grafana Monitoring Dashboard for Kubernetes
     
-    I.--Install Helm
+    I.-- Install Helm
     
-      $ sudo snap install helm --classic
+       $ sudo snap install helm --classic
     
-      $ helm version
+       $ helm version
 
-    II. --Install Prometheus on EKS cluster
+    II. -- Install Prometheus on EKS cluster
     
-      $ helm repo add stable https://charts.helm.sh/stable          ///We need to add the Helm Stable Charts for our local client
+       $ helm repo add stable https://charts.helm.sh/stable          ///We need to add the Helm Stable Charts for our local client
 
-      $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts     ///Add Prometheus Helm repo
+       $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts     ///Add Prometheus Helm repo
 
-      $ kubectl create namespace prometheus
+       $ kubectl create namespace prometheus
 
-      $ helm install stable prometheus-community/kube-prometheus-stack -n prometheus
+       $ helm install stable prometheus-community/kube-prometheus-stack -n prometheus
 
-      $ kubectl get pods -n prometheus
+       $ kubectl get pods -n prometheus
 
-      $ kubectl get svc -n prometheus
+       $ kubectl get svc -n prometheus
 
 
     III. For exposing Prometheus to the external world using LoadBalancer
     
-      $ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus    #type:LoadBalancer, change port & targetport to 9090, save and close
+       $ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus    #type:LoadBalancer, change port & targetport to 9090, 
+ save and close
 
-      $ kubectl get svc -n prometheus    //copy dns name of LB and browse with 9090    
+       $ kubectl get svc -n prometheus    //copy dns name of LB and browse with 9090    
        
 17. After all the steps of #16 Login to grafana console: 
 
@@ -250,11 +251,9 @@ Before you begin, make sure you have the following prerequisites:
 
     Now we are proceeding with CD Part for that we need to uncomment "stage('Deploy to Kubernets')"
     
-    -- So for that we can configure "argocd" on kuberberts cluster for automated deployment
-
+    --So for that we can configure "argocd" on kuberberts cluster for automated deployment
                               **"OR"**
-
-    -- we can use jenkins for CD as well on kubernets.
+    --we can use jenkins for CD as well on kubernets.
     
     -- let's go by jenkins only , So as we already installed the plugins for k8s on jenkins so now we need to ssh jenkins server and copy the copy config file from /home/.kube/config and put it on your local system .
 
@@ -270,19 +269,19 @@ Before you begin, make sure you have the following prerequisites:
 
     -- configure git with your cli and verify auto trigger using below steps:
 
-       $ git config --global user.name "your.name"
+        $ git config --global user.name "your.name"
 
-       $ git config --global user.email "your-email-address"
+        $ git config --global user.email "your-email-address"
 
-       $ git clone https://github.com/Rojha-git/YT-cloned-app.git
+        $ git clone https://github.com/Rojha-git/YT-cloned-app.git
 
-       $ cd a-youtube-clone-app
+        $ cd a-youtube-clone-app
 
-       $ git add .
+        $ git add .
 
-       $ git commit -m "test change"
+        $ git commit -m "test change"
 
-       $ git push origin main
+        $ git push origin main
 
     -- run "kubectl get svc" on k8s cluster you can find the dns for loadbalancer , by this url you can access your actual application.
 
