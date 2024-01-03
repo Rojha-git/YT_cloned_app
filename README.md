@@ -246,8 +246,15 @@ Before you begin, make sure you have the following prerequisites:
               -- Create or add dashboard for kubernets cluster in grafana #id you can check on google.
 
     
-18. Till now we have testing all things for CI and monitoring for whole infrastructure. Now we are proceeding with CD Part for that we need to uncomment "stage('Deploy to Kubernets')" 
-    -- So for that we can configure "argocd" on kuberberts cluster for automated deployment **"OR"** we use jenkins for CD as well on kubernets.
+18. Till now we have testing all things for CI and monitoring for whole infrastructure.
+
+    Now we are proceeding with CD Part for that we need to uncomment "stage('Deploy to Kubernets')"
+    
+    -- So for that we can configure "argocd" on kuberberts cluster for automated deployment
+
+                              **"OR"** we
+
+                use jenkins for CD as well on kubernets.
     
     -- let's go by jenkins only , So as we already installed the plugins for k8s on jenkins so now we need to ssh jenkins server and copy the copy config file from /home/.kube/config and put it on your local system .
 
@@ -255,7 +262,7 @@ Before you begin, make sure you have the following prerequisites:
 
     -- Once all this done you can trigger your pipeline job and it will deploy your application on k8s.
  
-19. Now for auto trigger we can configure "webhook" so for that :
+20. Now for auto trigger we can configure "webhook" so for that :
 
     -- go to jenkins and select configure option for your pipeline , after that select "github project" and "github hook trigger" option.
 
