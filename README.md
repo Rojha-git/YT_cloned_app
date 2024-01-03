@@ -50,7 +50,7 @@ Before you begin, make sure you have the following prerequisites:
     $ terraform --version
 
 
-2. clone the git repo for terraform scripts-
+2.clone the git repo for terraform scripts-
 
 
     $ git clone "https://github.com/Rojha-git/Terraform_YT_cloned_app.git"
