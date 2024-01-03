@@ -1,5 +1,42 @@
 ## Build and Deploy a Modern YouTube Clone Application in React JS with Material UI 5
 
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Step-by-Step Guide](#step-by-step-guide)
+  - [1. Create an EC2 Instance on AWS](#1-create-an-ec2-instance-on-aws)
+  - [2. Install Terraform](#2-install-terraform)
+  - [3. Clone the Terraform Scripts](#3-clone-the-terraform-scripts)
+  - [4. Check the Status of Installed Services](#4-check-the-status-of-installed-services)
+  - [5. Login to Jenkins Console](#5-login-to-jenkins-console)
+  - [6. Configure Jenkins and Install Plugins](#6-configure-jenkins-and-install-plugins)
+  - [7. Generate Access Tokens](#7-generate-access-tokens)
+  - [8. Create Jenkins Pipeline](#8-create-jenkins-pipeline)
+  - [9. SonarQube Configuration](#9-sonarqube-configuration)
+  - [10. Setup Monitoring with Prometheus and Grafana](#10-setup-monitoring-with-prometheus-and-grafana)
+  - [11. Jenkins Pipeline Execution](#11-jenkins-pipeline-execution)
+  - [12. Create AWS EKS Cluster](#12-create-aws-eks-cluster)
+  - [13. Integrate Prometheus with EKS and Import Grafana Dashboard](#13-integrate-prometheus-with-eks-and-import-grafana-dashboard)
+  - [14. Automated Deployment with Jenkins on Kubernetes](#14-automated-deployment-with-jenkins-on-kubernetes)
+  - [15. Webhook Configuration](#15-webhook-configuration)
+- [Conclusion](#conclusion)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
+
+## Introduction
+This repository provides a step-by-step guide for building and deploying a modern YouTube clone application using React JS with Material UI 5. The guide covers setting up infrastructure on AWS, configuring Jenkins for CI/CD, integrating SonarQube for code analysis, and implementing monitoring with Prometheus and Grafana.
+
+## Prerequisites
+Before you begin, make sure you have the following prerequisites:
+- AWS account
+- GitHub account
+- DockerHub account
+- SonarQube account
+- Gmail account for email notifications
+
+## Step-by-Step Guide
+
 1.create an ec2(t2.micro) instance on AWS and after ssh to this instance install terraform on that using below commands:
     #Confirm the latest version number on the terraform website:
     https://www.terraform.io/downloads.html
