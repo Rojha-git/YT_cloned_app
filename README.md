@@ -64,7 +64,7 @@ Before you begin, make sure you have the following prerequisites:
     $ terraform apply
    
     
-4. check the status of the installed services:
+4.check the status of the installed services:
 
    check jenkins http://<ip_addr_jenkins_server>:8080
 
@@ -84,7 +84,7 @@ Before you begin, make sure you have the following prerequisites:
    
    $ sudo systemctl status grafana-server
 
-6. login to jenkins console:
+6.login to jenkins console:
    
    using http://<ip_addr_jenkins_server>:8080
    
