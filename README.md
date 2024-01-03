@@ -1,4 +1,5 @@
 ## Build and Deploy a Modern YouTube Clone Application in React JS with Material UI 5
+
 1.create an ec2(t2.micro) instance on AWS and after ssh to this instance install terraform on that using below commands:
     #Confirm the latest version number on the terraform website:
     https://www.terraform.io/downloads.html
@@ -37,6 +38,7 @@
    check grafana http://<ip_addr_monitoring_server>:3000
 
    --Commands to check services
+   
    $ sudo systemctl status prometheus
    
    $ sudo systemctl status node_exporter
@@ -65,7 +67,9 @@
 
 13. Login to prometheus using http://<ip_addr_monitoring_server>:9090   #username and password will be "admin"
     after login :
+    
     --Add job for node exporter in prometheus
+    
     $ cd /etc/prometheus/, ls, $ sudo nano prometheus.yml and below the job of prometheus, add job for node exporter
 
     
@@ -206,12 +210,41 @@
 
     
 18. Till now we have testing all things for CI and monitoring for whole infrastructure. Now we are proceeding with CD Part for that we need to uncomment "stage('Deploy to Kubernets')" 
-    --So for that we can configure "argocd" on kuberberts cluster for automated deployment also we use jenkins for CD as well on kubernets.
-    --let's go by jenkins only , So as we already installed the plugins for k8s on jenkins so now we need to copy the     
+    -- So for that we can configure "argocd" on kuberberts cluster for automated deployment **"OR"** we use jenkins for CD as well on kubernets.
+    
+    -- let's go by jenkins only , So as we already installed the plugins for k8s on jenkins so now we need to ssh jenkins server and copy the copy config file from /home/.kube/config and put it on your local system .
 
-   
+    -- Go to jenkins console and configure global credentials for 'kubernetes' using that 'config' file so that jenkins can authenticate or communicate with k8s cluster.
+
+    -- Once all this done you can trigger your pipeline job and it will deploy your application on k8s.
+ 
+19. Now for auto trigger we can configure "webhook" so for that :
+
+    -- go to jenkins and select configure option for your pipeline , after that select "github project" and "github hook trigger" option.
+
+    -- go to github and select "setting" for your application repo and configure webhook with jenkins url "http://"ip_addr":8080/github-webhook/
+
+    -- configure git with your cli and verify auto trigger using below steps:
+
+       $ git config --global user.name "your.name"
+
+       $ git config --global user.email "your-email-address"
+
+       $ git clone https://github.com/Rojha-git/YT-cloned-app.git
+
+       $ cd a-youtube-clone-app
+
+       $ git add .
+
+       $ git commit -m "test change"
+
+       $ git push origin main
+
+    -- run "kubectl get svc" on k8s cluster you can find the dns for loadbalancer , by this url you can access your actual application.
 
 
+    **Thankyou**
+    **Happy learning**
 
 
 
