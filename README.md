@@ -1,6 +1,6 @@
 ## Build and Deploy a Modern YouTube Clone Application in React JS with Material UI 5
 
- ![Complete CI-CD](https://github.com/Rojha-git/YT_cloned_app/blob/main/nodejs-ci-cd.PNG)
+ ![Complete CI-CD](https://github.com/Rojha-git/YT_cloned_app/blob/main/images/Jenkins-CI-CD.PNG)
 
 
 ## Table of Contents
