@@ -71,7 +71,7 @@ Before you begin, make sure you have the following prerequisites:
 
    check jenkins [ ](http://<ip_addr_jenkins_server>:8080)
 
-   check sonar (http://<ip_addr_jenkins_server>:9000)
+   check sonar: http://<ip_addr_jenkins_server>:9000
    
    check prometheus []http://<ip_addr_monitoring_server>:9090  #if url is not came up check status of service if not running start it using
 
