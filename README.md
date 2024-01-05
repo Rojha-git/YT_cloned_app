@@ -133,7 +133,7 @@ Before you begin, make sure you have the following prerequisites:
 
     ```
     #add job for node exporter abd jenkins
-         ```bash
+         
     
          - job_name: 'node_exporter'
            static_configs:
@@ -145,7 +145,7 @@ Before you begin, make sure you have the following prerequisites:
            static_configs:
              - targets: ['IP-Address-jenkins:8080']
     
-         ```
+         
    
     ```bash
     
@@ -226,6 +226,7 @@ Before you begin, make sure you have the following prerequisites:
         $ eksctl version
 
     IV.--Setup Kubernetes using eksctl
+    
         $ eksctl create cluster --name virtualtechbox-cluster \
     
           --region ap-south-1 \
@@ -239,18 +240,17 @@ Before you begin, make sure you have the following prerequisites:
          $ kubectl get nodes    
 
           
-17. --Integrate Prometheus with EKS and Import Grafana Monitoring Dashboard for Kubernetes
+18. --Integrate Prometheus with EKS and Import Grafana Monitoring Dashboard for Kubernetes
     
     I.-- Install Helm
-```bash
+
     
        $ sudo snap install helm --classic
     
        $ helm version
-```
+
     II. -- Install Prometheus on EKS cluster
 
-    ```bash
     
        $ helm repo add stable https://charts.helm.sh/stable          ///We need to add the Helm Stable Charts for our local client
 
@@ -264,17 +264,17 @@ Before you begin, make sure you have the following prerequisites:
 
        $ kubectl get svc -n prometheus
 
-```
+
     III. For exposing Prometheus to the external world using LoadBalancer:
 
-```bash
+       ```bash
     
        $ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus    #type:LoadBalancer, change port & targetport to 9090, 
  save and close
 
        $ kubectl get svc -n prometheus    //copy dns name of LB and browse with 9090    
 
-```
+       ```
 17. After all the steps of #16 Login to grafana console: 
 
     -- #Add data source in grafana using loadbalancer dns got from "$ kubectl get svc -n prometheus".
