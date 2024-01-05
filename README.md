@@ -69,7 +69,7 @@ Before you begin, make sure you have the following prerequisites:
 4.check the status of the installed services:
 
 
-   check jenkins [ ](http://<ip_addr_jenkins_server>:8080)
+   check jenkins [http://<ip_addr_jenkins_server>:8080](http://<ip_addr_jenkins_server>:8080)
 
    check sonar: http://<ip_addr_jenkins_server>:9000
    
