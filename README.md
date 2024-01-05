@@ -101,7 +101,7 @@ Before you begin, make sure you have the following prerequisites:
    primary password you can copy from the server using below commad :
    ```bash
 
-   "sudo cat /var/lib/jenkins/secrets/initialAdminPassword"
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
    ``` 
    - Enter the Administrator password
@@ -124,13 +124,16 @@ Before you begin, make sure you have the following prerequisites:
     after login :
     
     --Add job for node exporter in prometheus
+   
     ```bash
+    
     $ cd /etc/prometheus/
    
     $ sudo nano prometheus.yml
-    ```
-    below the job of prometheus, add job for node exporter
 
+    ```
+    #add job for node exporter abd jenkins
+         ```bash
     
          - job_name: 'node_exporter'
            static_configs:
@@ -142,8 +145,10 @@ Before you begin, make sure you have the following prerequisites:
            static_configs:
              - targets: ['IP-Address-jenkins:8080']
     
+         ```
+   
     ```bash
-
+    
     #Check the indentatio of the prometheus config file with below command
     
     $ promtool check config /etc/prometheus/prometheus.yml
@@ -153,9 +158,9 @@ Before you begin, make sure you have the following prerequisites:
     $ curl -X POST http://localhost:9090/-/reload
 
     ```
-10. After performing the #10 point you will be able to see the targets for matrices under the traget option in prometheus console.
+11. After performing the #10 point you will be able to see the targets for matrices under the traget option in prometheus console.
 
-11. login to grafana using []http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
+12. login to grafana using []http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
 
     --configure prometheus as the data source under the grafana using the prometheus url:
 
@@ -164,13 +169,13 @@ Before you begin, make sure you have the following prerequisites:
 
     **** Now you are able to access the monitoring console on grafana for both jenkins job and node_exporter server  ****
     
-12. login to Jenkins console and run the jenkins job by commenting deployment stage /* stage('Deploy to Kubernets') */ 
+13. login to Jenkins console and run the jenkins job by commenting deployment stage /* stage('Deploy to Kubernets') */ 
 
     becuase we have have not created aws EKS cluster yet , by this we can test our pipeline till "docker build and push".
 
-13. run the job , check if any issue came then try to troubleshoot.
+14. run the job , check if any issue came then try to troubleshoot.
 
-14. configuration steps for generating gmail report --->>
+15. configuration steps for generating gmail report --->>
 
     --login to your gmail account and search for app password under : " Account >> security " and genaerte the token
 
@@ -184,7 +189,7 @@ Before you begin, make sure you have the following prerequisites:
 
 
 
-15. Create AWS EKS Cluster
+16. Create AWS EKS Cluster
     
     I.--Install kubectl on Jenkins Server
  
@@ -234,7 +239,7 @@ Before you begin, make sure you have the following prerequisites:
          $ kubectl get nodes    
 
           
-16. --Integrate Prometheus with EKS and Import Grafana Monitoring Dashboard for Kubernetes
+17. --Integrate Prometheus with EKS and Import Grafana Monitoring Dashboard for Kubernetes
     
     I.-- Install Helm
 ```bash
