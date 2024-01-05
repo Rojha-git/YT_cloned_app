@@ -160,7 +160,7 @@ Before you begin, make sure you have the following prerequisites:
     ```
 11. After performing the #10 point you will be able to see the targets for matrices under the traget option in prometheus console.
 
-12. login to grafana using []http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
+12. login to grafana using http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
 
     --configure prometheus as the data source under the grafana using the prometheus url:
 
