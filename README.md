@@ -69,15 +69,18 @@ Before you begin, make sure you have the following prerequisites:
 4.check the status of the installed services:
 
 
-   check jenkins http://<ip_addr_jenkins_server>:8080
+   check jenkins []http://<ip_addr_jenkins_server>:8080
 
-   check sonar http://<ip_addr_jenkins_server>:9000
+   check sonar []http://<ip_addr_jenkins_server>:9000
    
-   check prometheus http://<ip_addr_monitoring_server>:9090  #if url is not came up check status of service if not running start it using
+   check prometheus []http://<ip_addr_monitoring_server>:9090  #if url is not came up check status of service if not running start it using
+
+   ```bash
 
    $ sudo systemctl start prometheus
 
-   check grafana http://<ip_addr_monitoring_server>:3000
+   ```
+   check grafana []http://<ip_addr_monitoring_server>:3000
 
    --Commands to check services
 
@@ -93,9 +96,10 @@ Before you begin, make sure you have the following prerequisites:
 
 6.login to jenkins console:
    
-   using http://<ip_addr_jenkins_server>:8080
+   using []http://<ip_addr_jenkins_server>:8080
    
-   primary password you can copy from the server using "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" - Enter the Administrator password
+   primary password you can copy from the server using "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" - Enter the 
+   Administrator password
    
    after that you can create your userid and password.
 
@@ -106,12 +110,12 @@ Before you begin, make sure you have the following prerequisites:
 
 10. Under jenkins create an pipeline with "yt_cloned_ci-cd" name using below steps:
 
-     --- select SCM option and provide repo https://github.com/Rojha-git/YT_cloned_app.git to access jenkins file for ci-cd.
+     --- select SCM option and provide repo []https://github.com/Rojha-git/YT_cloned_app.git to access jenkins file for ci-cd.
 
 12. login to sonarqube console and configure quality gate , webhook , and create new project using jenkins server url, once all these completed then after the jenkins pipeline 
     completion you will be able to see all the flow and unit tests.
 
-13. Login to prometheus using http://<ip_addr_monitoring_server>:9090   #username and password will be "admin"
+13. Login to prometheus using []http://<ip_addr_monitoring_server>:9090   #username and password will be "admin"
     after login :
     
     --Add job for node exporter in prometheus
@@ -129,18 +133,19 @@ Before you begin, make sure you have the following prerequisites:
            static_configs:
              - targets: ['IP-Address-jenkins:8080']
     
-
-    --Check the indentatio of the prometheus config file with below command
+```bash
+    #Check the indentatio of the prometheus config file with below command
     
     $ promtool check config /etc/prometheus/prometheus.yml
 
-    --Reload the Prometheus configuration
+    #Reload the Prometheus configuration
     
-    $ curl -X POST http://localhost:9090/-/reload 
-    
+    $ curl -X POST http://localhost:9090/-/reload
+
+    ```
 15. After performing the #12 point you will be able to see the targets for matrices under the traget option in prometheus console.
 
-16. login to grafana using http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
+16. login to grafana using []http://<ip_addr_monitoring_server>:3000 --> #username and password will be "admin"
 
     --configure prometheus as the data source under the grafana using the prometheus url:
 
@@ -222,12 +227,15 @@ Before you begin, make sure you have the following prerequisites:
 16. --Integrate Prometheus with EKS and Import Grafana Monitoring Dashboard for Kubernetes
     
     I.-- Install Helm
+```bash
     
        $ sudo snap install helm --classic
     
        $ helm version
-
+```
     II. -- Install Prometheus on EKS cluster
+
+    ```bash
     
        $ helm repo add stable https://charts.helm.sh/stable          ///We need to add the Helm Stable Charts for our local client
 
@@ -241,19 +249,22 @@ Before you begin, make sure you have the following prerequisites:
 
        $ kubectl get svc -n prometheus
 
+```
+    III. For exposing Prometheus to the external world using LoadBalancer:
 
-    III. For exposing Prometheus to the external world using LoadBalancer
+```bash
     
        $ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus    #type:LoadBalancer, change port & targetport to 9090, 
  save and close
 
        $ kubectl get svc -n prometheus    //copy dns name of LB and browse with 9090    
-       
+
+```
 17. After all the steps of #16 Login to grafana console: 
 
-              -- Add data source in grafana using loadbalancer dns got from "$ kubectl get svc -n prometheus".
+    -- #Add data source in grafana using loadbalancer dns got from "$ kubectl get svc -n prometheus".
     
-              -- Create or add dashboard for kubernets cluster in grafana #id you can check on google.
+    -- #Create or add dashboard for kubernets cluster in grafana #id you can check on google.
 
     
 18. Till now we have testing all things for CI and monitoring for whole infrastructure.
