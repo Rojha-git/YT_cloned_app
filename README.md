@@ -69,7 +69,7 @@ Before you begin, make sure you have the following prerequisites:
 4.check the status of the installed services:
 
 
-   check jenkins []http://<ip_addr_jenkins_server>:8080
+   check jenkins [](http://<ip_addr_jenkins_server>:8080)
 
    check sonar []http://<ip_addr_jenkins_server>:9000
    
@@ -96,7 +96,7 @@ Before you begin, make sure you have the following prerequisites:
 
 6.login to jenkins console:
    
-   using []http://<ip_addr_jenkins_server>:8080
+   using [](http://<ip_addr_jenkins_server>:8080)
    
    primary password you can copy from the server using "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" - Enter the 
    Administrator password
@@ -133,7 +133,8 @@ Before you begin, make sure you have the following prerequisites:
            static_configs:
              - targets: ['IP-Address-jenkins:8080']
     
-```bash
+    ```bash
+
     #Check the indentatio of the prometheus config file with below command
     
     $ promtool check config /etc/prometheus/prometheus.yml
