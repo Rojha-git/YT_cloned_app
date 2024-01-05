@@ -68,6 +68,7 @@ Before you begin, make sure you have the following prerequisites:
     
 4.check the status of the installed services:
 
+
    check jenkins http://<ip_addr_jenkins_server>:8080
 
    check sonar http://<ip_addr_jenkins_server>:9000
@@ -79,6 +80,8 @@ Before you begin, make sure you have the following prerequisites:
    check grafana http://<ip_addr_monitoring_server>:3000
 
    --Commands to check services
+
+   ```bash
    
    $ sudo systemctl status prometheus
    
