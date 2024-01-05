@@ -244,14 +244,18 @@ Before you begin, make sure you have the following prerequisites:
     
     I.-- Install Helm
 
-    
+       ```bash    
+
        $ sudo snap install helm --classic
     
        $ helm version
 
+       ```
+
     II. -- Install Prometheus on EKS cluster
 
-    
+       ```bash
+
        $ helm repo add stable https://charts.helm.sh/stable          ///We need to add the Helm Stable Charts for our local client
 
        $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts     ///Add Prometheus Helm repo
@@ -263,6 +267,8 @@ Before you begin, make sure you have the following prerequisites:
        $ kubectl get pods -n prometheus
 
        $ kubectl get svc -n prometheus
+
+       ```
 
 
     III. For exposing Prometheus to the external world using LoadBalancer:
