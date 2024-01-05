@@ -89,6 +89,8 @@ Before you begin, make sure you have the following prerequisites:
    
    $ sudo systemctl status grafana-server
 
+   ```
+
 6.login to jenkins console:
    
    using http://<ip_addr_jenkins_server>:8080
