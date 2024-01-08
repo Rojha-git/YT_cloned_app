@@ -44,6 +44,8 @@ Before you begin, make sure you have the following prerequisites:
     https://www.terraform.io/downloads.html
     
       wget https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+
+      apt install unzip
     
       unzip terraform_1.0.7_linux_amd64.zip
     
@@ -55,15 +57,15 @@ Before you begin, make sure you have the following prerequisites:
 2.clone the git repo for terraform scripts-
 
 
-    $ git clone "https://github.com/Rojha-git/Terraform_YT_cloned_app.git"
+      git clone "https://github.com/Rojha-git/Terraform_YT_cloned_app.git"
    
-    $ cd Terraform_YT_cloned_app        #under this we have two repo so choose one by one and run below command.
+      cd Terraform_YT_cloned_app        #under this we have two repo so choose one by one and run below command.
    
-    $ terraform init                    # aws should be configure with your instances
+      terraform init                    # aws should be configure with your instances
    
-    $ terraform plan
+      terraform plan
    
-    $ terraform apply
+      terraform apply
    
     
 3.check the status of the installed services:
