@@ -43,13 +43,13 @@ Before you begin, make sure you have the following prerequisites:
     #Confirm the latest version number on the terraform website:
     https://www.terraform.io/downloads.html
     
-    $ wget https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+      wget https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
     
-    $ unzip terraform_1.0.7_linux_amd64.zip
+      unzip terraform_1.0.7_linux_amd64.zip
     
-    $ sudo mv terraform /usr/local/bin/
+      sudo mv terraform /usr/local/bin/
     
-    $ terraform --version
+      terraform --version
 
 
 2.clone the git repo for terraform scripts-
